@@ -1,0 +1,198 @@
+---
+import Base from '../layouts/Base.astro';
+import CTASection from '../components/CTASection.astro';
+import { clinic, whatsappLink } from '../config/clinic';
+
+const waUrl = whatsappLink();
+const title = `Sobre a ${clinic.name} — Nossa história e equipe | ${clinic.city}`;
+const description = `Conheça a história, a equipe e os valores da ${clinic.name}. Atendimento humanizado com excelência técnica em ${clinic.city}.`;
+
+const valores = [
+  { icon: '🤝', title: 'Humanização', text: 'Enxergamos o paciente como um todo: suas dúvidas, medos e contexto de vida. Não apenas o diagnóstico.' },
+  { icon: '🏆', title: 'Excelência técnica', text: 'Atualização contínua, protocolos baseados em evidências e investimento permanente na qualidade do atendimento.' },
+  { icon: '💬', title: 'Transparência', text: 'Comunicação clara sobre diagnósticos, tratamentos, preços e prazos. Sem jargão, sem surpresas.' },
+  { icon: '🌱', title: 'Acolhimento', text: 'Um ambiente físico e digital pensado para reduzir ansiedade e transmitir segurança desde o primeiro contato.' },
+  { icon: '✅', title: 'Compromisso', text: 'Pontualidade, follow-up e continuidade do cuidado. O vínculo com nossos pacientes não termina quando eles saem da consulta.' },
+];
+---
+
+<Base title={title} description={description}>
+  <!-- HERO -->
+  <section class='sobre-hero'>
+    <div class='container sobre-hero__inner'>
+      <span class='sobre-hero__eyebrow'>Nossa história</span>
+      <h1 class='sobre-hero__title'>Cuidado que nasceu de uma convicção</h1>
+      <p class='sobre-hero__lead'>
+        Acreditamos que todo paciente merece mais do que um diagnóstico. Merece atenção, clareza e um acompanhamento contínuo que começa na primeira consulta e não termina com a receita.
+      </p>
+    </div>
+  </section>
+
+  <!-- HISTÓRIA -->
+  <section class='section' aria-labelledby='historia-title'>
+    <div class='container sobre-grid'>
+      <div>
+        <h2 id='historia-title'>De onde viemos</h2>
+        <p class='sobre-p'>
+          A Clínica Smoke Test nasceu do desejo de criar um espaço de cuidado diferente: um lugar onde o paciente é tratado pelo nome, onde o médico conhece o seu histórico e onde a tecnologia existe para facilitar — nunca para distanciar.
+        </p>
+        <p class='sobre-p'>
+          Fundada em [ano] em {clinic.city}, começamos com a convicção de que saúde é cuidado, não processo. Hoje, nossa equipe conta com profissionais especializados comprometidos com essa mesma missão: oferecer o atendimento que gostaríamos de receber.
+        </p>
+        <p class='sobre-note'>ℹ️ <em>Preencher com a história real da clínica antes do lançamento.</em></p>
+      </div>
+      <div class='sobre-quote'>
+        <blockquote>
+          <p>&#8220;Cuidado de verdade: competente, transparente e próximo.&#8221;</p>
+          <footer>— Posicionamento da {clinic.name}</footer>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- VALORES -->
+  <section class='section section--alt' aria-labelledby='valores-title'>
+    <div class='container'>
+      <span class='section__eyebrow'>Princípios</span>
+      <h2 class='section__title' id='valores-title'>O que nos orienta</h2>
+      <div class='valores-grid'>
+        {valores.map((v) => (
+          <article class='valor-card'>
+            <span class='valor-card__icon' aria-hidden='true'>{v.icon}</span>
+            <h3 class='valor-card__title'>{v.title}</h3>
+            <p class='valor-card__text'>{v.text}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- EQUIPE -->
+  <section class='section' aria-labelledby='equipe-title'>
+    <div class='container'>
+      <span class='section__eyebrow'>Nossa equipe</span>
+      <h2 class='section__title' id='equipe-title'>Quem cuida de você</h2>
+      <p class='section__lead'>Profissionais qualificados comprometidos com o cuidado humanizado.</p>
+      <div class='equipe-placeholder'>
+        <div class='ep-card'>
+          <div class='ep-card__avatar' aria-hidden='true'>
+            <svg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1' stroke-linecap='round' stroke-linejoin='round'><circle cx='12' cy='8' r='5'/><path d='M20 21a8 8 0 1 0-16 0'/></svg>
+          </div>
+          <div class='ep-card__info'>
+            <h3>Dra./Dr. [Nome Completo]</h3>
+            <p class='ep-card__specialty'>Especialidade — CRM [número/UF]</p>
+            <p class='ep-card__bio'>Mini-biografia do profissional a ser preenchida com dados reais antes do lançamento.</p>
+          </div>
+        </div>
+        <p class='ep-note'>ℹ️ <em>Substituir por perfis reais da equipe médica com foto, CRM e mini-bio no tom da marca.</em></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ESTRUTURA -->
+  <section class='section section--alt' aria-labelledby='estrutura-title'>
+    <div class='container'>
+      <span class='section__eyebrow'>Estrutura</span>
+      <h2 class='section__title' id='estrutura-title'>Um espaço pensado para você</h2>
+      <p class='section__lead'>Nossa clínica foi planejada para que você se sinta bem desde que chega.</p>
+      <ul class='estrutura-list' role='list'>
+        <li>Recepção acolhedora e climatizada</li>
+        <li>Consultórios equipados com tecnologia moderna</li>
+        <li>Wi-Fi gratuito na sala de espera</li>
+        <li>Acessibilidade para cadeirantes e mobilidade reduzida</li>
+        <li>[Descrever outros espaços e recursos — preencher antes do lançamento]</li>
+      </ul>
+    </div>
+  </section>
+
+  <CTASection
+    title='Pronto para cuidar da sua saúde?'
+    text='Nossa equipe está aqui para receber você com atenção e cuidado. Agende sua consulta — é simples, rápido e sem complicação.'
+    ctaPrimaryText='Agendar pelo WhatsApp'
+    ctaPrimaryHref={waUrl}
+    ctaSecondaryText='Ver especialidades'
+    ctaSecondaryHref='/servicos'
+    primaryIsWhatsApp={true}
+  />
+</Base>
+
+<style>
+  .sobre-hero {
+    background: linear-gradient(135deg, #2D6A4F 0%, #52B788 100%);
+    padding: var(--space-20) 0;
+    color: var(--color-text-inverse);
+  }
+  .sobre-hero__inner { max-width: 680px; }
+  .sobre-hero__eyebrow {
+    display: inline-block; font-size: var(--text-xs); font-weight: var(--font-semibold);
+    letter-spacing: var(--tracking-wide); text-transform: uppercase;
+    color: var(--color-accent-light); margin-bottom: var(--space-4);
+  }
+  .sobre-hero__title {
+    font-size: clamp(var(--text-4xl), 6vw, var(--text-5xl));
+    color: var(--color-text-inverse); margin-bottom: var(--space-4);
+  }
+  .sobre-hero__lead {
+    font-size: var(--text-lg); color: rgba(255,255,255,0.9);
+    line-height: var(--leading-relaxed); max-width: 580px;
+  }
+  .sobre-grid { display: grid; grid-template-columns: 1fr 380px; gap: var(--space-12); align-items: start; }
+  .sobre-p { font-size: var(--text-base); color: var(--color-text-secondary); line-height: var(--leading-relaxed); margin-bottom: var(--space-4); }
+  .sobre-note { font-size: var(--text-xs); color: var(--color-text-disabled); font-style: italic; margin-top: var(--space-4); }
+  .sobre-quote {
+    background-color: var(--color-bg-section-alt);
+    border-left: 4px solid var(--color-primary);
+    border-radius: 0 var(--radius-xl) var(--radius-xl) 0;
+    padding: var(--space-8);
+  }
+  .sobre-quote blockquote p {
+    font-family: var(--font-heading); font-size: var(--text-xl); font-style: italic;
+    color: var(--color-text-primary); line-height: var(--leading-relaxed); margin-bottom: var(--space-4);
+  }
+  .sobre-quote blockquote footer { font-size: var(--text-sm); color: var(--color-text-secondary); }
+  .valores-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-6); margin-top: var(--space-8); }
+  .valor-card {
+    background-color: var(--color-bg-card); border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg); padding: var(--space-6); box-shadow: var(--shadow-sm);
+  }
+  .valor-card__icon { font-size: 1.75rem; display: block; margin-bottom: var(--space-3); }
+  .valor-card__title { font-family: var(--font-body); font-size: var(--text-base); font-weight: var(--font-semibold); margin-bottom: var(--space-2); }
+  .valor-card__text { font-size: var(--text-sm); color: var(--color-text-secondary); line-height: var(--leading-relaxed); }
+  .equipe-placeholder { display: flex; flex-direction: column; gap: var(--space-4); }
+  .ep-card {
+    display: flex; gap: var(--space-6); align-items: flex-start;
+    padding: var(--space-6); background-color: var(--color-bg-card);
+    border: 1px solid var(--color-border); border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+  }
+  .ep-card__avatar {
+    width: 80px; height: 80px; border-radius: var(--radius-full);
+    background-color: var(--color-primary-subtle);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--color-primary); flex-shrink: 0;
+  }
+  .ep-card__info h3 { font-size: var(--text-lg); margin-bottom: var(--space-1); }
+  .ep-card__specialty { font-size: var(--text-sm); color: var(--color-primary); margin-bottom: var(--space-2); }
+  .ep-card__bio { font-size: var(--text-sm); color: var(--color-text-secondary); line-height: var(--leading-relaxed); }
+  .ep-note { font-size: var(--text-xs); color: var(--color-text-disabled); font-style: italic; }
+  .estrutura-list {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-4);
+    margin-top: var(--space-4);
+  }
+  .estrutura-list li {
+    display: flex; align-items: flex-start; gap: var(--space-2);
+    font-size: var(--text-base); color: var(--color-text-secondary);
+    padding: var(--space-4); background-color: var(--color-bg-card);
+    border-radius: var(--radius-md); border: 1px solid var(--color-border);
+  }
+  .estrutura-list li::before { content: '✓'; color: var(--color-primary); font-weight: var(--font-bold); flex-shrink: 0; }
+  @media (max-width: 1024px) {
+    .sobre-grid { grid-template-columns: 1fr; }
+    .valores-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 640px) {
+    .valores-grid { grid-template-columns: 1fr; }
+    .estrutura-list { grid-template-columns: 1fr; }
+    .ep-card { flex-direction: column; }
+  }
+</style>

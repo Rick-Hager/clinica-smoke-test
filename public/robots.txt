@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /obrigado
+Disallow: /politica-de-privacidade
+
+Sitemap: https://clinica-smoke-test.vercel.app/sitemap.xml

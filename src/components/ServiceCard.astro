@@ -1,0 +1,51 @@
+---
+interface Props {
+  slug: string;
+  name: string;
+  short: string;
+  icon: string;
+}
+const { slug, name, short, icon } = Astro.props;
+---
+
+<article class='scard'>
+  <div class='scard__icon' set:html={icon} />
+  <h3 class='scard__title'>{name}</h3>
+  <p class='scard__text'>{short}</p>
+  <a href={`/servicos/${slug}`} class='scard__cta' aria-label={`Saiba mais sobre ${name}`}>
+    Saiba mais
+    <svg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' aria-hidden='true'><path d='M5 12h14'/><path d='m12 5 7 7-7 7'/></svg>
+  </a>
+</article>
+
+<style>
+  .scard {
+    display: flex; flex-direction: column; gap: var(--space-4);
+    padding: var(--space-8);
+    background-color: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    text-decoration: none; color: inherit;
+    transition: box-shadow var(--duration-normal) var(--ease-out), transform var(--duration-normal) var(--ease-out), border-color var(--duration-normal) var(--ease-out);
+  }
+  .scard:hover { box-shadow: var(--shadow-lg); transform: translateY(-4px); border-color: var(--color-primary-light); }
+  .scard:focus-visible { outline: none; box-shadow: var(--shadow-focus); }
+  .scard__icon { color: var(--color-primary); width: 48px; height: 48px; }
+  .scard__title {
+    font-family: var(--font-heading);
+    font-size: var(--text-xl); font-weight: var(--font-semibold);
+    color: var(--color-text-primary);
+    line-height: var(--leading-snug);
+    letter-spacing: var(--tracking-tight);
+  }
+  .scard__text { font-size: var(--text-base); color: var(--color-text-secondary); line-height: var(--leading-relaxed); flex: 1; }
+  .scard__cta {
+    display: inline-flex; align-items: center; gap: var(--space-1);
+    font-size: var(--text-sm); font-weight: var(--font-semibold);
+    color: var(--color-primary); text-decoration: none;
+    margin-top: auto;
+    transition: gap var(--duration-fast) var(--ease-out);
+  }
+  .scard__cta:hover { gap: var(--space-2); text-decoration: underline; }
+</style>

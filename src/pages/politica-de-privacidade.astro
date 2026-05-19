@@ -1,0 +1,94 @@
+---
+import Base from '../layouts/Base.astro';
+import { clinic } from '../config/clinic';
+
+const title = `Política de Privacidade — ${clinic.name}`;
+const description = `Política de Privacidade da ${clinic.name}. Como tratamos seus dados pessoais conforme a LGPD.`;
+---
+
+<Base title={title} description={description} noindex={true}>
+  <section class='pp-section'>
+    <div class='container pp-inner'>
+      <h1>Política de Privacidade</h1>
+      <p class='pp-updated'>Última atualização: [data a preencher]</p>
+
+      <p>A <strong>{clinic.name}</strong> está comprometida com a proteção dos seus dados pessoais, em conformidade com a Lei Geral de Proteção de Dados (LGPD — Lei 13.709/2018).</p>
+
+      <div class='pp-notice'>
+        <p>⚠️ <strong>Aviso:</strong> Este texto é uma estrutura preliminar. O conteúdo completo e juridicamente válido da Política de Privacidade deve ser redigido por assessoria jurídica especializada antes do lançamento do site.</p>
+      </div>
+
+      <h2>1. Controlador dos dados</h2>
+      <p>{clinic.name}<br />
+      E-mail: {clinic.email}<br />
+      Telefone: {clinic.phone}<br />
+      [Endereço completo e CNPJ — preencher antes do lançamento]</p>
+
+      <h2>2. Dados coletados</h2>
+      <p>Coletamos os seguintes dados pessoais:</p>
+      <ul>
+        <li>Nome completo, telefone e e-mail (via formulários de contato)</li>
+        <li>Dados de navegação (via cookies e Google Analytics 4)</li>
+        <li>Preferências de consentimento de cookies</li>
+      </ul>
+
+      <h2>3. Finalidade e base legal</h2>
+      <ul>
+        <li>Agendamento e comunicação com pacientes (consentimento e execução de contrato)</li>
+        <li>Melhoria de desempenho do site (interesse legítimo)</li>
+        <li>Cumprimento de obrigações regulatórias CFM e outras legais</li>
+      </ul>
+
+      <h2>4. Cookies</h2>
+      <p>Utilizamos cookies para melhorar a experiência de navegação e analisar o uso do site. Você pode aceitar ou recusar cookies não essenciais através do banner de consentimento exibido na primeira visita.</p>
+
+      <h2>5. Compartilhamento de dados</h2>
+      <p>Seus dados não são vendidos a terceiros. Podemos compartilhar informações com prestadores de serviços necessários para o funcionamento do site (ex.: Google Analytics), sempre com garantias de proteção de dados.</p>
+
+      <h2>6. Prazo de retenção</h2>
+      <p>Os dados são mantidos pelo prazo necessário para cumprir as finalidades descritas acima, ou conforme exigido por lei.</p>
+
+      <h2>7. Direitos do titular</h2>
+      <p>Você tem direito a:</p>
+      <ul>
+        <li>Acessar, corrigir ou excluir seus dados pessoais</li>
+        <li>Revogar o consentimento a qualquer momento</li>
+        <li>Solicitar a portabilidade dos seus dados</li>
+        <li>Opor-se ao tratamento de dados</li>
+      </ul>
+      <p>Para exercer esses direitos, entre em contato pelo e-mail: {clinic.email}</p>
+
+      <h2>8. Encarregado de dados (DPO)</h2>
+      <p>[Nome e contato do DPO — preencher antes do lançamento]</p>
+
+      <h2>9. Alterações nesta política</h2>
+      <p>Esta política pode ser atualizada periodicamente. Recomendamos que você a revise regularmente.</p>
+
+      <div style='margin-top:var(--space-8)'>
+        <a href='/' class='btn btn-secondary'>Voltar para o início</a>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .pp-section { padding: var(--space-16) 0; }
+  .pp-inner {
+    max-width: 760px;
+    display: flex; flex-direction: column; gap: var(--space-6);
+  }
+  .pp-inner h1 { font-size: clamp(var(--text-3xl), 5vw, var(--text-4xl)); }
+  .pp-inner h2 { font-size: var(--text-2xl); margin-top: var(--space-4); }
+  .pp-inner p { font-size: var(--text-base); color: var(--color-text-secondary); line-height: var(--leading-relaxed); }
+  .pp-inner ul { padding-left: var(--space-6); display: flex; flex-direction: column; gap: var(--space-2); }
+  .pp-inner li { font-size: var(--text-base); color: var(--color-text-secondary); line-height: var(--leading-relaxed); list-style: disc; }
+  .pp-updated { font-size: var(--text-sm); color: var(--color-text-disabled); margin-top: calc(var(--space-2) * -1); }
+  .pp-notice {
+    padding: var(--space-4) var(--space-5);
+    background-color: #FEF3C7;
+    border-left: 4px solid var(--color-warning);
+    border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    font-size: var(--text-sm);
+    color: #92400E;
+  }
+</style>

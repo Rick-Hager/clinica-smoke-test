@@ -1,0 +1,70 @@
+---
+import Base from '../../layouts/Base.astro';
+import ServiceCard from '../../components/ServiceCard.astro';
+import CTASection from '../../components/CTASection.astro';
+import { clinic, whatsappLink, specialties } from '../../config/clinic';
+
+const waUrl = whatsappLink();
+const title = `Especialidades Médicas — ${clinic.name} | ${clinic.city}`;
+const description = `Conheça as especialidades da ${clinic.name}: clínica geral, cardiologia, dermatologia, ginecologia, ortopedia e mais. Agende sua consulta em ${clinic.city}.`;
+---
+
+<Base title={title} description={description}>
+  <section class='esp-hero'>
+    <div class='container esp-hero__inner'>
+      <span class='esp-hero__eyebrow'>Nossas especialidades</span>
+      <h1 class='esp-hero__title'>Cuidado completo para você e sua família</h1>
+      <p class='esp-hero__lead'>
+        Oferecemos atendimento especializado com uma equipe qualificada e comprometida com o seu bem-estar. Encontre a especialidade que você precisa e agende sua consulta com facilidade.
+      </p>
+    </div>
+  </section>
+
+  <section class='section' aria-labelledby='esp-list-title'>
+    <div class='container'>
+      <h2 class='sr-only' id='esp-list-title'>Lista de especialidades</h2>
+      <div class='grid-services'>
+        {specialties.map((s) => (
+          <ServiceCard slug={s.slug} name={s.name} short={s.short} icon={s.icon} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    title='Tem dúvidas sobre qual especialidade precisa?'
+    text='Nossa equipe está pronta para orientar você. Entre em contato pelo WhatsApp e vamos indicar o melhor caminho para o seu cuidado.'
+    ctaPrimaryText='Falar pelo WhatsApp'
+    ctaPrimaryHref={waUrl}
+    ctaSecondaryText='Ir para contato'
+    ctaSecondaryHref='/contato'
+    primaryIsWhatsApp={true}
+  />
+</Base>
+
+<style>
+  .esp-hero {
+    background: linear-gradient(135deg, #2D6A4F 0%, #52B788 100%);
+    padding: var(--space-20) 0;
+    color: var(--color-text-inverse);
+  }
+  .esp-hero__inner { max-width: 680px; }
+  .esp-hero__eyebrow {
+    display: inline-block; font-size: var(--text-xs); font-weight: var(--font-semibold);
+    letter-spacing: var(--tracking-wide); text-transform: uppercase;
+    color: var(--color-accent-light); margin-bottom: var(--space-4);
+  }
+  .esp-hero__title {
+    font-size: clamp(var(--text-4xl), 6vw, var(--text-5xl));
+    color: var(--color-text-inverse); margin-bottom: var(--space-4);
+  }
+  .esp-hero__lead {
+    font-size: var(--text-lg); color: rgba(255,255,255,0.9);
+    line-height: var(--leading-relaxed); max-width: 560px;
+  }
+  .sr-only {
+    position: absolute; width: 1px; height: 1px; padding: 0;
+    margin: -1px; overflow: hidden; clip: rect(0,0,0,0);
+    white-space: nowrap; border-width: 0;
+  }
+</style>

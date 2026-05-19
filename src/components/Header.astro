@@ -1,0 +1,276 @@
+---
+import { clinic, whatsappLink, specialties } from '../config/clinic';
+const waUrl = whatsappLink();
+---
+
+<header class='header' id='site-header'>
+  <div class='container header__inner'>
+    <a href='/' class='header__logo' aria-label={`${clinic.name} — página inicial`}>
+      <svg xmlns='http://www.w3.org/2000/svg' width='26' height='26' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' aria-hidden='true'>
+        <path d='M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z'/>
+        <path d='M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12'/>
+      </svg>
+      <span class='logo__wrap'>
+        <span class='logo__clinic'>Clínica</span>
+        <span class='logo__name'>Smoke Test</span>
+      </span>
+    </a>
+
+    <nav class='header__nav' aria-label='Navegação principal'>
+      <ul class='nav__list' role='list'>
+        <li><a class='nav__link' href='/'>Início</a></li>
+        <li><a class='nav__link' href='/sobre'>Sobre</a></li>
+        <li class='nav__item--dd'>
+          <button class='nav__link nav__dd-btn' aria-haspopup='true' aria-expanded='false' id='dd-btn'>
+            Especialidades
+            <svg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' aria-hidden='true'><path d='m6 9 6 6 6-6'/></svg>
+          </button>
+          <div class='nav__dropdown' role='menu' id='dd-menu' aria-hidden='true'>
+            <a class='nav__dd-link nav__dd-link--all' href='/servicos' role='menuitem'>Ver todas as especialidades</a>
+            <div class='nav__dd-sep' aria-hidden='true'></div>
+            {specialties.map((s) => (
+              <a class='nav__dd-link' href={`/servicos/${s.slug}`} role='menuitem'>{s.name}</a>
+            ))}
+          </div>
+        </li>
+        <li><a class='nav__link' href='/blog'>Blog</a></li>
+        <li><a class='nav__link' href='/contato'>Contato</a></li>
+      </ul>
+    </nav>
+
+    <div class='header__actions'>
+      <a href={waUrl} class='btn btn-primary btn-sm header__cta' target='_blank' rel='noopener noreferrer'>
+        <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='currentColor' aria-hidden='true'><path d='M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z'/></svg>
+        Agendar pelo WhatsApp
+      </a>
+      <a href={waUrl} class='header__wa-icon' target='_blank' rel='noopener noreferrer' aria-label='Agendar pelo WhatsApp'>
+        <svg xmlns='http://www.w3.org/2000/svg' width='22' height='22' viewBox='0 0 24 24' fill='#25D366' aria-hidden='true'><path d='M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z'/></svg>
+      </a>
+      <button class='header__hamburger' id='hamburger' aria-label='Abrir menu de navegação' aria-expanded='false' aria-controls='mobile-menu'>
+        <span class='hbg__bar'></span>
+        <span class='hbg__bar'></span>
+        <span class='hbg__bar'></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class='mobile-menu' id='mobile-menu' aria-hidden='true'>
+  <div class='mm__overlay' id='mm-overlay'></div>
+  <nav class='mm__panel' aria-label='Menu mobile'>
+    <div class='mm__top'>
+      <a href='/' class='header__logo'>
+        <svg xmlns='http://www.w3.org/2000/svg' width='22' height='22' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' aria-hidden='true'>
+          <path d='M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z'/>
+          <path d='M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12'/>
+        </svg>
+        <span class='logo__wrap'><span class='logo__clinic'>Clínica</span><span class='logo__name'>Smoke Test</span></span>
+      </a>
+      <button class='mm__close' id='mm-close' aria-label='Fechar menu de navegação'>
+        <svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' aria-hidden='true'><path d='M18 6 6 18'/><path d='m6 6 12 12'/></svg>
+      </button>
+    </div>
+    <ul class='mm__nav' role='list'>
+      <li><a class='mm__link' href='/'>Início</a></li>
+      <li><a class='mm__link' href='/sobre'>Sobre</a></li>
+      <li>
+        <button class='mm__link mm__accordion' aria-expanded='false'>
+          Especialidades
+          <svg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' aria-hidden='true'><path d='m6 9 6 6 6-6'/></svg>
+        </button>
+        <ul class='mm__sub' role='list' aria-hidden='true'>
+          <li><a class='mm__sublink' href='/servicos'>Ver todas</a></li>
+          {specialties.map((s) => (
+            <li><a class='mm__sublink' href={`/servicos/${s.slug}`}>{s.name}</a></li>
+          ))}
+        </ul>
+      </li>
+      <li><a class='mm__link' href='/blog'>Blog</a></li>
+      <li><a class='mm__link' href='/contato'>Contato</a></li>
+    </ul>
+    <div class='mm__footer'>
+      <a href={waUrl} class='btn btn-whatsapp' target='_blank' rel='noopener noreferrer' style='width:100%;justify-content:center'>
+        <svg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='currentColor' aria-hidden='true'><path d='M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z'/></svg>
+        Agendar pelo WhatsApp
+      </a>
+    </div>
+  </nav>
+</div>
+
+<style>
+  .header {
+    position: sticky; top: 0; z-index: 100;
+    height: 72px;
+    background-color: var(--color-bg-card);
+    border-bottom: 1px solid transparent;
+    transition: border-color var(--duration-normal) var(--ease-out), box-shadow var(--duration-normal) var(--ease-out);
+  }
+  .header.is-scrolled {
+    border-bottom-color: var(--color-border);
+    box-shadow: 0 1px 8px rgba(0,0,0,0.06);
+  }
+  .header__inner {
+    display: flex; align-items: center; height: 100%; gap: var(--space-8);
+  }
+  .header__logo {
+    display: flex; align-items: center; gap: var(--space-2);
+    text-decoration: none; flex-shrink: 0; color: var(--color-primary);
+  }
+  .header__logo:hover { text-decoration: none; opacity: 0.85; }
+  .logo__wrap { display: flex; flex-direction: column; line-height: 1.15; }
+  .logo__clinic { font-family: var(--font-heading); font-size: var(--text-xs); font-weight: var(--font-medium); color: var(--color-text-secondary); letter-spacing: 0.04em; }
+  .logo__name { font-family: var(--font-body); font-size: var(--text-sm); font-weight: var(--font-bold); color: var(--color-text-primary); }
+  .header__nav { flex: 1; }
+  .nav__list { display: flex; align-items: center; gap: var(--space-1); }
+  .nav__item--dd { position: relative; }
+  .nav__link {
+    display: flex; align-items: center; gap: var(--space-1);
+    padding: var(--space-2) var(--space-3);
+    font-size: var(--text-sm); font-weight: var(--font-medium);
+    color: var(--color-text-secondary);
+    text-decoration: none; background: none; border: none; cursor: pointer;
+    border-radius: var(--radius-sm); white-space: nowrap;
+    transition: color var(--duration-fast) var(--ease-out), background-color var(--duration-fast) var(--ease-out);
+  }
+  .nav__link:hover, .nav__link[aria-current='page'] {
+    color: var(--color-primary); background-color: var(--color-primary-subtle); text-decoration: none;
+  }
+  .nav__link:focus-visible { outline: none; box-shadow: var(--shadow-focus); }
+  .nav__dropdown {
+    position: absolute; top: calc(100% + 8px); left: 50%;
+    transform: translateX(-50%) translateY(-6px);
+    min-width: 220px;
+    background-color: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    padding: var(--space-2) 0;
+    opacity: 0; visibility: hidden;
+    transition: opacity var(--duration-fast) var(--ease-out), transform var(--duration-fast) var(--ease-out), visibility var(--duration-fast);
+    z-index: 200;
+  }
+  .nav__item--dd:hover .nav__dropdown,
+  .nav__dd-btn[aria-expanded='true'] + .nav__dropdown {
+    opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0);
+  }
+  .nav__dd-link {
+    display: block; padding: var(--space-2) var(--space-5);
+    font-size: var(--text-sm); color: var(--color-text-secondary);
+    text-decoration: none;
+    transition: color var(--duration-fast) var(--ease-out), background-color var(--duration-fast) var(--ease-out);
+  }
+  .nav__dd-link:hover { color: var(--color-primary); background-color: var(--color-primary-subtle); text-decoration: none; }
+  .nav__dd-link--all { font-weight: var(--font-semibold); color: var(--color-primary); }
+  .nav__dd-sep { height: 1px; background-color: var(--color-border); margin: var(--space-2) 0; }
+  .header__actions { display: flex; align-items: center; gap: var(--space-3); flex-shrink: 0; }
+  .header__wa-icon { display: none; align-items: center; justify-content: center; width: 44px; height: 44px; }
+  .header__hamburger {
+    display: none; flex-direction: column; justify-content: center; align-items: center; gap: 5px;
+    width: 44px; height: 44px; background: none; border: none; cursor: pointer;
+    border-radius: var(--radius-sm); padding: var(--space-2);
+    transition: background-color var(--duration-fast) var(--ease-out);
+  }
+  .header__hamburger:hover { background-color: var(--color-primary-subtle); }
+  .header__hamburger:focus-visible { outline: none; box-shadow: var(--shadow-focus); }
+  .hbg__bar { display: block; width: 22px; height: 2px; background-color: var(--color-text-primary); border-radius: 2px; }
+  /* MOBILE MENU */
+  .mobile-menu { position: fixed; inset: 0; z-index: 9000; visibility: hidden; }
+  .mobile-menu.is-open { visibility: visible; }
+  .mm__overlay {
+    position: absolute; inset: 0; background-color: rgba(0,0,0,0.48);
+    opacity: 0; transition: opacity var(--duration-slow) var(--ease-out); cursor: pointer;
+  }
+  .mobile-menu.is-open .mm__overlay { opacity: 1; }
+  .mm__panel {
+    position: absolute; top: 0; right: 0;
+    width: min(320px, 88vw); height: 100%;
+    background-color: var(--color-bg-card);
+    display: flex; flex-direction: column;
+    transform: translateX(100%);
+    transition: transform var(--duration-slow) var(--ease-out);
+    overflow-y: auto;
+  }
+  .mobile-menu.is-open .mm__panel { transform: translateX(0); }
+  .mm__top {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: var(--space-4) var(--space-5); border-bottom: 1px solid var(--color-border);
+    height: 64px; flex-shrink: 0;
+  }
+  .mm__close {
+    display: flex; align-items: center; justify-content: center;
+    width: 44px; height: 44px; background: none; border: none; cursor: pointer;
+    border-radius: var(--radius-sm); color: var(--color-text-secondary);
+    transition: background-color var(--duration-fast) var(--ease-out), color var(--duration-fast) var(--ease-out);
+  }
+  .mm__close:hover { background-color: var(--color-primary-subtle); color: var(--color-primary); }
+  .mm__nav { flex: 1; padding: var(--space-4) 0; }
+  .mm__link {
+    display: flex; align-items: center; justify-content: space-between;
+    width: 100%; padding: var(--space-4) var(--space-5);
+    font-size: var(--text-base); font-weight: var(--font-medium);
+    color: var(--color-text-primary); text-decoration: none;
+    background: none; border: none; cursor: pointer;
+    transition: color var(--duration-fast) var(--ease-out), background-color var(--duration-fast) var(--ease-out);
+  }
+  .mm__link:hover { color: var(--color-primary); background-color: var(--color-primary-subtle); text-decoration: none; }
+  .mm__sub {
+    overflow: hidden; max-height: 0;
+    background-color: var(--color-bg-page);
+    transition: max-height var(--duration-slow) var(--ease-out);
+  }
+  .mm__sub.is-open { max-height: 500px; }
+  .mm__sublink {
+    display: block; padding: var(--space-3) var(--space-5) var(--space-3) var(--space-10);
+    font-size: var(--text-sm); color: var(--color-text-secondary); text-decoration: none;
+    transition: color var(--duration-fast) var(--ease-out), background-color var(--duration-fast) var(--ease-out);
+  }
+  .mm__sublink:hover { color: var(--color-primary); background-color: var(--color-primary-subtle); text-decoration: none; }
+  .mm__footer { padding: var(--space-5); border-top: 1px solid var(--color-border); flex-shrink: 0; }
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .header__nav { display: none; }
+    .header__cta { display: none; }
+    .header__wa-icon { display: flex; }
+    .header__hamburger { display: flex; }
+  }
+  @media (min-width: 901px) {
+    .mobile-menu { display: none; }
+  }
+</style>
+
+<script>
+  const header = document.getElementById('site-header');
+  if (header) {
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('is-scrolled', window.scrollY > 10);
+    }, { passive: true });
+  }
+  const hamburger = document.getElementById('hamburger');
+  const mmClose = document.getElementById('mm-close');
+  const mmOverlay = document.getElementById('mm-overlay');
+  const mobileMenu = document.getElementById('mobile-menu');
+  function openMenu() {
+    mobileMenu?.classList.add('is-open');
+    mobileMenu?.setAttribute('aria-hidden', 'false');
+    hamburger?.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeMenu() {
+    mobileMenu?.classList.remove('is-open');
+    mobileMenu?.setAttribute('aria-hidden', 'true');
+    hamburger?.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+  hamburger?.addEventListener('click', openMenu);
+  mmClose?.addEventListener('click', closeMenu);
+  mmOverlay?.addEventListener('click', closeMenu);
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMenu(); });
+  const accordion = document.querySelector('.mm__accordion');
+  accordion?.addEventListener('click', () => {
+    const expanded = accordion.getAttribute('aria-expanded') === 'true';
+    accordion.setAttribute('aria-expanded', String(!expanded));
+    const sub = accordion.nextElementSibling;
+    sub?.classList.toggle('is-open', !expanded);
+    sub?.setAttribute('aria-hidden', String(expanded));
+  });
+</script>
